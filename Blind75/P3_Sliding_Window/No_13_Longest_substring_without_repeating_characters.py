@@ -22,7 +22,7 @@
 # 0 <= s.length <= 1000
 # s may consist of printable ASCII characters.
 
-def lengthOfLongestSubstring(s: str) -> int:
+def length_of_longest_substring(s: str) -> int:
     l = 0
     char_set = set()
     max_len = 0
@@ -39,7 +39,7 @@ testcase2 = "bbbbb"
 testcase3 = "pwwkew"
 testcase4 = "zxyzxyz"
 
-print(lengthOfLongestSubstring(testcase1))
-print(lengthOfLongestSubstring(testcase2))
-print(lengthOfLongestSubstring(testcase3))
-print(lengthOfLongestSubstring(testcase4))
+print(length_of_longest_substring(testcase1))
+print(length_of_longest_substring(testcase2))
+print(length_of_longest_substring(testcase3))
+print(length_of_longest_substring(testcase4))
