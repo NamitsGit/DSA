@@ -1,6 +1,7 @@
 import pytest
 from ..Hashing.anagrams_ import anagrams
 from ..Hashing.most_frequent_char import most_frequent_char
+from ..Hashing.pair_sum import pair_sum
 
 
 def test_anagrams():
@@ -28,3 +29,17 @@ def test_anagrams():
 ])
 def test_most_frequent_char(s, expected_result):
     assert most_frequent_char(s) == expected_result
+
+
+@pytest.mark.parametrize("nums, target, expected_result", [
+    ([3, 2, 5, 4, 1], 8, (0, 2)),
+    ([4, 7, 9, 2, 5, 1], 5, (0, 5)),
+    ([4, 7, 9, 2, 5, 1], 3, (3, 5)),
+    ([1, 6, 7, 2], 13, (1, 2)),
+    ([9, 9], 18, (0, 1)),
+    ([6, 4, 2, 8 ], 12, (1, 3)),
+    ([5, 4, 1, 4], 8, (1, 3)),
+    ([ i for i in range(1, 6001) ], 11999, (5998, 5999))
+])
+def test_pair_sum(nums, target, expected_result):
+    assert pair_sum(nums, target) == expected_result
