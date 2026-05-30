@@ -7,6 +7,8 @@ from ..Hashing.intersection import intersection
 from ..Hashing.exclusive_items import exclusive_items
 from ..Hashing.all_unique import all_unique
 from ..Hashing.intersection_with_dupes import intersection_with_dupes
+from ..Beginner_Recursion.sum_numbers import sum_numbers_recursive
+from ..Beginner_Recursion.factorial import factorial
 
 
 def test_anagrams():
@@ -126,3 +128,27 @@ def test_all_unique(li, expected_result):
 ])
 def test_intersection_with_dupes(a, b, expected_result):
     assert intersection_with_dupes(a, b) == expected_result
+
+@pytest.mark.parametrize("numbers, expected_result", [
+    ([5, 2, 9, 10],26),
+    ([1, -1, 1, -1, 1, -1, 1],1),
+    ([],0),
+    ([1000, 0, 0, 0, 0, 0, 1],1001),
+    ([700, 70, 7],777),
+    ([-10, -9, -8, -7, -6, -5, -4, -3, -2, -1],-55),
+    ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],0),
+    ([123456789, 12345678, 1234567, 123456, 12345, 1234, 123, 12, 1, 0],137174205)
+])
+def test_sum_numbers(numbers, expected_result):
+    assert sum_numbers_recursive(numbers) == expected_result
+
+@pytest.mark.parametrize("n, expected_result", [
+    (3, 6),
+    (6, 720),
+    (18, 6402373705728000),
+    (1, 1),
+    (13, 6227020800),
+    (0, 1),
+])
+def test_factorial(n, expected_result):
+    assert factorial(n) == expected_result
