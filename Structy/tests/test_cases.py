@@ -9,6 +9,7 @@ from ..Hashing.all_unique import all_unique
 from ..Hashing.intersection_with_dupes import intersection_with_dupes
 from ..Beginner_Recursion.sum_numbers import sum_numbers_recursive
 from ..Beginner_Recursion.factorial import factorial
+from ..Beginner_Recursion.sum_of_lengths import sum_of_lengths
 
 
 def test_anagrams():
@@ -152,3 +153,13 @@ def test_sum_numbers(numbers, expected_result):
 ])
 def test_factorial(n, expected_result):
     assert factorial(n) == expected_result
+
+@pytest.mark.parametrize("strings, expected_result", [
+    (['goat', 'cat', 'purple'], 13),
+    (['bike', 'at', 'pencils', 'phone'], 18),
+    ([], 0),
+    (['', ' ', '  ', '   ', '    ', '     '], 15),
+    (['0', '313', '1234567890'], 14),
+])
+def test_sum_of_lengths(strings, expected_result):
+    assert sum_of_lengths(strings) == expected_result
