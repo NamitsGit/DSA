@@ -10,6 +10,9 @@ from ..Hashing.intersection_with_dupes import intersection_with_dupes
 from ..Beginner_Recursion.sum_numbers import sum_numbers_recursive
 from ..Beginner_Recursion.factorial import factorial
 from ..Beginner_Recursion.sum_of_lengths import sum_of_lengths
+from ..Beginner_Recursion.reverse_string import reverse_string
+from ..Beginner_Recursion.palindrome import palindrome_recursive
+from ..Beginner_Recursion.fibonacci import fibonacci
 
 
 def test_anagrams():
@@ -163,3 +166,44 @@ def test_factorial(n, expected_result):
 ])
 def test_sum_of_lengths(strings, expected_result):
     assert sum_of_lengths(strings) == expected_result
+
+
+@pytest.mark.parametrize("s, expected_result", [
+    ('hello', 'olleh'),
+    ('david', 'divad'),
+    ('abby', 'ybba'),
+    ('mississippi', 'ippississim'),
+    ('eleventennine', 'eninnetnevele'),
+    ('madam', 'madam')
+])
+def test_reverse_string(s, expected_result):
+    assert reverse_string(s) == expected_result
+
+
+@pytest.mark.parametrize("s, expected_result", [
+    ('hello', False),
+    ('david', False),
+    ('madam', True),
+    ('aebg', False),
+    ('', True),
+    ('x', True),
+    ('pop', True),
+    ('kayak', True),
+    ('boot', False),
+    ('rotator', True)
+])
+def test_palindrome_recursive(s, expected_result):
+    assert palindrome_recursive(s) == expected_result
+
+@pytest.mark.parametrize("n, expected_result", [
+    (0, 0),
+    (1, 1),
+    (2, 1),
+    (3, 2),
+    (4, 3),
+    (5, 5),
+    (8, 21),
+])
+def test_fibonacci(n, expected_result):
+    assert fibonacci(n) == expected_result
+
