@@ -3,6 +3,7 @@ import pytest
 from ..Linked_List.sum_list import Node, sum_list
 from ..Linked_List.linked_list_find import linked_list_find
 from ..Linked_List.get_node_value import get_node_value
+from ..Linked_List.reverse_list import reverse_list
 
 
 def test_sum_list():
@@ -66,3 +67,30 @@ def test_linked_list_find(head, target, expected_result):
 ])
 def test_get_node_value(head, index, expected_result):
     assert get_node_value(head, index) == expected_result
+
+rev1 = Node("a")
+rev2 = Node("b")
+rev3 = Node("c")
+rev4 = Node("d")
+rev1.next = rev2
+rev2.next = rev3
+rev3.next = rev4
+
+rev2_1 = Node(1)
+rev2_2 = Node(2)
+rev2_3 = Node(3)
+rev2_4 = Node(4)
+
+rev2_1.next = rev2_2
+rev2_2.next = rev2_3
+rev2_3.next = rev2_4
+
+rev3_1 = Node(1)
+
+@pytest.mark.parametrize("head, expected_result", [
+    (rev1, rev4),
+    (rev2_1, rev2_4),
+    (rev3_1, rev3_1),
+])
+def test_reverse_list(head, expected_result):
+    assert reverse_list(head) == expected_result
